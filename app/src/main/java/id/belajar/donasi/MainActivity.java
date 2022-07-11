@@ -1,11 +1,14 @@
 package id.belajar.donasi;
 
+import androidx.activity.result.ActivityResultLauncher;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -13,6 +16,7 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.journeyapps.barcodescanner.ScanContract;
 import com.journeyapps.barcodescanner.ScanOptions;
 
 import java.util.List;
@@ -20,12 +24,13 @@ import java.util.List;
 import id.belajar.donasi.activity.Auth.LoginActivity;
 import id.belajar.donasi.activity.Berita.BeritaActivity;
 import id.belajar.donasi.activity.Berita.BeritaAdapter;
-import id.belajar.donasi.activity.Donasi.Add.DonasiActivity;
 import id.belajar.donasi.activity.Donasi.Yayasan.YayasanActivity;
+import id.belajar.donasi.activity.Donasi.Yayasan.YayasanDetailActivity;
 import id.belajar.donasi.activity.Gallery.GalleryActivity;
 import id.belajar.donasi.activity.Gallery.GalleryAdapter;
 import id.belajar.donasi.activity.Profile.ProfileDetailActivity;
 import id.belajar.donasi.activity.camera.CameraActivity;
+import id.belajar.donasi.activity.camera.CaptureAct;
 import id.belajar.donasi.activity.camera.QrActivity;
 import id.belajar.donasi.connection.Connection;
 import id.belajar.donasi.databinding.ActivityMainBinding;
@@ -35,6 +40,7 @@ import id.belajar.donasi.entity.Gallery;
 import id.belajar.donasi.entity.LoginRequest;
 import id.belajar.donasi.entity.LoginResponse;
 import id.belajar.donasi.entity.User;
+import id.belajar.donasi.entity.Yayasan;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -44,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
     private BeritaAdapter adapter;
     private GalleryAdapter adapter1;
     private User user;
+    private Yayasan yayasan;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -94,8 +101,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         binding.btnscan.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, QrActivity.class);
-            startActivity(intent);
+            scanCode();
         });
 
         binding.btnkeluar.setOnClickListener(v -> {
@@ -184,6 +190,57 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<BaseResponse<List<Gallery>>> call, Throwable t) {
                 Toast.makeText(MainActivity.this,"Gagal Masuk", Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
+    private void scanCode()
+    {
+        ScanOptions options = new ScanOptions();
+        options.setPrompt("Volume up to flash on");
+        options.setBeepEnabled(true);
+        options.setOrientationLocked(true);
+        options.setCaptureActivity(CaptureAct.class);
+        barLaucher.launch(options);
+    }
+
+    ActivityResultLauncher<ScanOptions> barLaucher = registerForActivityResult(new ScanContract(), result->
+    {
+        if(result.getContents() !=null)
+        {
+            try {
+                String id = result.getContents().split("=")[1];
+                getDetailYayasan(id);
+            } catch (Exception e) {
+                Toast.makeText(MainActivity.this,"Invalid Qr", Toast.LENGTH_LONG).show();
+            }
+        } else {
+            Toast.makeText(MainActivity.this, "Invalid Qr Data", Toast.LENGTH_LONG).show();
+        }
+    });
+
+
+    private void getDetailYayasan(String idYayasan){
+        Connection.getInstance().getServiceEndPoint().getYayasanDetail(idYayasan).enqueue(new Callback<BaseResponse<Yayasan>>() {
+            @Override
+            public void onResponse(Call<BaseResponse<Yayasan>> call, Response<BaseResponse<Yayasan>> response) {
+                if(response.isSuccessful()){
+                    BaseResponse<Yayasan> res  = response.body();
+                    if(res.code.equals("00")){
+                        Intent intent = new Intent(MainActivity.this, YayasanDetailActivity.class);
+                        intent.putExtra("extra_yayasan",new Gson().toJson(res.data));
+                        startActivity(intent);
+                    } else {
+                        Toast.makeText(MainActivity.this, res.message, Toast.LENGTH_LONG).show();
+                    }
+                } else {
+                    Toast.makeText(MainActivity.this,  response.message(), Toast.LENGTH_LONG).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<BaseResponse<Yayasan>> call, Throwable t) {
+
             }
         });
     }

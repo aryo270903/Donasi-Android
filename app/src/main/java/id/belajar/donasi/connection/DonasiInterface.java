@@ -14,6 +14,7 @@ import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface DonasiInterface {
@@ -30,8 +31,8 @@ public interface DonasiInterface {
     @GET("http://103.226.138.222:3000/user/profile-detail")
     Call<BaseResponse<User>> getProfileDetail(@Query("id") String id);
 
-    @GET("api/yayasan/detail")
-    Call<BaseResponse<Yayasan>> getYayasanDetail(@Query("id") String id);
+    @GET("api/yayasan/detail/{id}")
+    Call<BaseResponse<Yayasan>> getYayasanDetail(@Path("id") String id);
 
     @GET("api/berita")
     Call<BaseResponse<List<Berita>>> getListBerita();

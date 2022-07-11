@@ -15,7 +15,6 @@ import java.util.List;
 import id.belajar.donasi.MainActivity;
 import id.belajar.donasi.R;
 import id.belajar.donasi.activity.Auth.LoginActivity;
-import id.belajar.donasi.activity.Donasi.Add.DonasiActivity;
 import id.belajar.donasi.activity.Gallery.GalleryAdapter;
 import id.belajar.donasi.connection.Connection;
 import id.belajar.donasi.databinding.ActivityYayasanBinding;
