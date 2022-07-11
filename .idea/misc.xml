@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Skripsi/app/src/main/res/drawable-v24/border_box.xml" value="0.125" />
+        <entry key="..\:/Skripsi/app/src/main/res/drawable-v24/custom_rectangle.xml" value="0.1115" />
+        <entry key="..\:/Skripsi/app/src/main/res/drawable-v24/ic_arrow.xml" value="0.125" />
+        <entry key="..\:/Skripsi/app/src/main/res/drawable-v24/ic_confirmation_number.xml" value="0.1105" />
+        <entry key="..\:/Skripsi/app/src/main/res/drawable-v24/ic_donation.xml" value="0.125" />
+        <entry key="..\:/Skripsi/app/src/main/res/drawable-v24/ic_exit.xml" value="0.125" />
+        <entry key="..\:/Skripsi/app/src/main/res/drawable-v24/ic_galery.xml" value="0.125" />
+        <entry key="..\:/Skripsi/app/src/main/res/drawable-v24/ic_launcher_background.xml" value="0.125" />
+        <entry key="..\:/Skripsi/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.125" />
+        <entry key="..\:/Skripsi/app/src/main/res/drawable-v24/ic_person.xml" value="0.125" />
+        <entry key="..\:/Skripsi/app/src/main/res/drawable-v24/ic_scan_qr_code.xml" value="0.1115" />
+        <entry key="..\:/Skripsi/app/src/main/res/drawable-v24/ic_user.xml" value="0.125" />
+        <entry key="..\:/Skripsi/app/src/main/res/drawable-v24/seleted.xml" value="0.1105" />
+        <entry key="..\:/Skripsi/app/src/main/res/drawable/ic_image_list.xml" value="0.125" />
+        <entry key="..\:/Skripsi/app/src/main/res/drawable/ic_launcher_background.xml" value="0.125" />
+        <entry key="..\:/Skripsi/app/src/main/res/drawable/shape_res.xml" value="0.1105" />
+        <entry key="..\:/Skripsi/app/src/main/res/layout/action_bar_berita.xml" value="0.203125" />
+        <entry key="..\:/Skripsi/app/src/main/res/layout/activity_berita.xml" value="0.20416666666666666" />
+        <entry key="..\:/Skripsi/app/src/main/res/layout/activity_berita2.xml" value="0.19010416666666666" />
+        <entry key="..\:/Skripsi/app/src/main/res/layout/activity_berita3.xml" value="0.20416666666666666" />
+        <entry key="..\:/Skripsi/app/src/main/res/layout/activity_berita_detail.xml" value="0.20416666666666666" />
+        <entry key="..\:/Skripsi/app/src/main/res/layout/activity_camera.xml" value="0.20416666666666666" />
+        <entry key="..\:/Skripsi/app/src/main/res/layout/activity_donasi.xml" value="0.20416666666666666" />
+        <entry key="..\:/Skripsi/app/src/main/res/layout/activity_gallery.xml" value="0.20416666666666666" />
+        <entry key="..\:/Skripsi/app/src/main/res/layout/activity_gallery_detail.xml" value="0.20416666666666666" />
+        <entry key="..\:/Skripsi/app/src/main/res/layout/activity_industry.xml" value="0.20416666666666666" />
+        <entry key="..\:/Skripsi/app/src/main/res/layout/activity_list_berita.xml" value="0.20416666666666666" />
+        <entry key="..\:/Skripsi/app/src/main/res/layout/activity_list_industry.xml" value="0.20416666666666666" />
+        <entry key="..\:/Skripsi/app/src/main/res/layout/activity_login.xml" value="0.20416666666666666" />
+        <entry key="..\:/Skripsi/app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="..\:/Skripsi/app/src/main/res/layout/activity_main2.xml" value="0.203125" />
+        <entry key="..\:/Skripsi/app/src/main/res/layout/activity_profile_detail.xml" value="0.20416666666666666" />
+        <entry key="..\:/Skripsi/app/src/main/res/layout/activity_qr.xml" value="0.20416666666666666" />
+        <entry key="..\:/Skripsi/app/src/main/res/layout/activity_scanner.xml" value="0.20416666666666666" />
+        <entry key="..\:/Skripsi/app/src/main/res/layout/activity_simple_scanner.xml" value="0.20416666666666666" />
+        <entry key="..\:/Skripsi/app/src/main/res/layout/activity_yayasan.xml" value="0.20416666666666666" />
+        <entry key="..\:/Skripsi/app/src/main/res/layout/activity_yayasan_detail.xml" value="0.20416666666666666" />
+        <entry key="..\:/Skripsi/app/src/main/res/layout/item_slide.xml" value="0.203125" />
+        <entry key="..\:/Skripsi/app/src/main/res/layout/list_gallery.xml" value="0.1" />
+        <entry key="..\:/Skripsi/app/src/main/res/layout/list_item_berita.xml" value="0.25" />
+        <entry key="..\:/Skripsi/app/src/main/res/layout/list_item_gallery.xml" value="0.20416666666666666" />
+        <entry key="..\:/Skripsi/app/src/main/res/layout/list_item_gallery_pager.xml" value="0.33" />
+        <entry key="..\:/Skripsi/app/src/main/res/layout/list_item_yayasan.xml" value="0.20416666666666666" />
+        <entry key="..\:/Skripsi/app/src/main/res/layout/scaner_frame.xml" value="0.20416666666666666" />
+        <entry key="..\:/Skripsi/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.125" />
+        <entry key="..\:/Skripsi/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.125" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
