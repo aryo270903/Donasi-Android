@@ -34,6 +34,10 @@ public class YayasanDetailActivity extends AppCompatActivity {
         binding = ActivityYayasanDetailBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        binding.backdetailyayasan.setOnClickListener(v -> {
+            finish();
+        });
+
         Bundle extras = getIntent().getExtras();
         if (extras != null ){
             String yayasanExtra = extras.getString("extra_yayasan");

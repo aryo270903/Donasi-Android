@@ -12,6 +12,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -54,18 +55,26 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         user = MyApplication.getInstance().getUserSession();
 
-        if(user == null){
-            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-            startActivity(intent);
-            finish();
-            return;
-        }
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        if (MyApplication.getInstance().userSession == null){
+            binding.textnama.setVisibility(View.GONE);
+            binding.btnEdit.setVisibility(View.GONE);
+            binding.btnLogin.setVisibility(View.VISIBLE);
+            binding.btnkeluar.setVisibility(View.GONE);
+        }else {
+            getProfileDetail();
+            binding.btnLogin.setVisibility(View.GONE);
+        }
+
+        binding.btnLogin.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this,LoginActivity.class);
+            startActivity(intent);
+        });
 
         adapter = new BeritaAdapter(this);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
@@ -116,7 +125,6 @@ public class MainActivity extends AppCompatActivity {
             finish();
         });
 
-        getProfileDetail();
     }
 
     private void getProfileDetail() {
