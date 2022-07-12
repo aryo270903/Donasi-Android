@@ -1,7 +1,15 @@
 package id.belajar.donasi.entity;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Donasi {
     public String id;
+    public String name;
+    public String email;
+    public String no_tlp;
+    public String transfer;
+    public String qr;
+    public String link;
     public String id_donatur;
     public String jenis_donasi;
     public String jumlah;
@@ -10,7 +18,7 @@ public class Donasi {
     public String kota;
     public String kecamatan;
     public String kelurahan;
-    public String longitude;
-    public String latitude;
+    @SerializedName("full_address")
+    public String fulladdress;
     public String status;
 }

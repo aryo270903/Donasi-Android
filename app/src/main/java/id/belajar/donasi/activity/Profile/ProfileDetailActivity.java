@@ -53,12 +53,12 @@ public class ProfileDetailActivity extends AppCompatActivity {
         });
     }
     private void mappingUserView(User user){
-        binding.txtFirstName.setText(user.first_name);
-        binding.txtLastName.setText(user.last_name);
-        binding.txtNim.setText(user.nim);
-        binding.txtPhone.setText(user.phone);
-        binding.txtFullName.setText(user.full_name);
-        binding.txtEmail.setText(user.email);
+//        binding.txtFirstName.setText(user.first_name);
+//        binding.txtLastName.setText(user.last_name);
+//        binding.txtPhone.setText(user.phone);
+        binding.txtFullName.setText(user.email);
+        binding.txtNim.setText(user.name);
+        binding.txtEmail.setText(user.role);
 
     }
 }

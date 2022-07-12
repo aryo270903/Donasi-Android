@@ -19,6 +19,9 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".activity.Auth.RegisterActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.Donasi.Yayasan.YayasanDetailIdActivity"
             android:exported="false" />
         <activity

@@ -21,4 +21,13 @@
 
         <item>Belum Selesai</item>
     </string-array>
+
+    <string-array name="jenis_pembayaran">
+
+        <item>Transfer</item>
+
+        <item>Qr</item>
+
+        <item>Link</item>
+    </string-array>
 </resources>

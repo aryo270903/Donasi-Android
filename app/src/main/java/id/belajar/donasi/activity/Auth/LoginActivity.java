@@ -8,6 +8,7 @@ import android.widget.Toast;
 
 import id.belajar.donasi.MainActivity;
 import id.belajar.donasi.MyApplication;
+import id.belajar.donasi.activity.Profile.ProfileDetailActivity;
 import id.belajar.donasi.connection.Connection;
 import id.belajar.donasi.databinding.ActivityLoginBinding;
 import id.belajar.donasi.entity.LoginRequest;
@@ -26,6 +27,11 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         binding.btnLogin.setOnClickListener(v -> validasi());
+
+        binding.btnregister.setOnClickListener(v -> {
+            Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+            startActivity(intent);
+        });
     }
     void validasi (){
         String email = binding.editEmail.getText().toString();
@@ -62,8 +68,8 @@ public class LoginActivity extends AppCompatActivity {
 
     void goToLogin(LoginResponse loginResponse){
         MyApplication.getInstance().setUserSession(loginResponse.data);
-        Shared.setValue("access_token",loginResponse.data.access_token);
-        Connection.getInstance().resetToken();
+//        Shared.setValue("access_token",loginResponse.data.access_token);
+//        Connection.getInstance().resetToken();
         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
         startActivity(intent);
         Toast.makeText(this,"Anda Telah Login",Toast.LENGTH_LONG).show();

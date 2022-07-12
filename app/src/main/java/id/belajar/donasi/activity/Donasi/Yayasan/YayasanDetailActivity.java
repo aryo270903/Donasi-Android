@@ -3,6 +3,7 @@ package id.belajar.donasi.activity.Donasi.Yayasan;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -13,6 +14,7 @@ import java.util.HashMap;
 
 import id.belajar.donasi.BuildConfig;
 import id.belajar.donasi.MainActivity;
+import id.belajar.donasi.MyApplication;
 import id.belajar.donasi.activity.Berita.BeritaDetailActivity;
 import id.belajar.donasi.connection.Connection;
 import id.belajar.donasi.databinding.ActivityYayasanBinding;
@@ -28,11 +30,23 @@ import retrofit2.Response;
 public class YayasanDetailActivity extends AppCompatActivity {
     private ActivityYayasanDetailBinding binding;
     private Yayasan yayasan;
+    private User user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityYayasanDetailBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        user = MyApplication.getInstance().getUserSession();
+
+        if (MyApplication.getInstance().userSession == null){
+            binding.InputNama.setVisibility(View.VISIBLE);
+            binding.inputEmail.setVisibility(View.VISIBLE);
+            binding.Inputnotlp.setVisibility(View.VISIBLE);
+        }else {
+            binding.InputNama.setVisibility(View.GONE);
+            binding.inputEmail.setVisibility(View.GONE);
+            binding.Inputnotlp.setVisibility(View.GONE);
+        }
 
         binding.backdetailyayasan.setOnClickListener(v -> {
             finish();
@@ -44,6 +58,7 @@ public class YayasanDetailActivity extends AppCompatActivity {
             yayasan = new Gson().fromJson(yayasanExtra, Yayasan.class);
             mappingYayasan(yayasan);
         }
+
         binding.btnsubmit.setOnClickListener(v -> validasi());
     }
     private void mappingYayasan(Yayasan yayasan){
@@ -57,7 +72,6 @@ public class YayasanDetailActivity extends AppCompatActivity {
     }
 
     private void validasi(){
-        String iddonatur = binding.InputIdDonatur.getText().toString();
         String jenisbarang = binding.InputJenisBarang.getSelectedItem().toString();
         String jumlah = binding.InputJumlah.getText().toString();
         String pengiriman = binding.InputPengiriman.getSelectedItem().toString();
@@ -65,18 +79,15 @@ public class YayasanDetailActivity extends AppCompatActivity {
         String kota = binding.InputKota.getText().toString();
         String kecamatan = binding.InputKecamatan.getText().toString();
         String kelurahan = binding.InputKelurahan.getText().toString();
-        String longitude = binding.Inputlatitude.getText().toString();
-        String latitude = binding.Inputlongitude.getText().toString();
-        String status = binding.InputStatus.getSelectedItem().toString();
+        String fulladdress = binding.Inputalamat.getText().toString();
 
-        submitDonasi(iddonatur,jenisbarang,jumlah,pengiriman,provinsi,kota,kecamatan,kelurahan,longitude,latitude,status);
+        submitDonasi(jenisbarang,jumlah,pengiriman,provinsi,kota,kecamatan,kelurahan,fulladdress);
     }
 
-    void submitDonasi(String iddonatur, String jenis_donasi, String jumlah, String pengiriman, String provinsi, String kota , String kecamatan,
-                      String kelurahan, String longitude, String latitude, String status){
+    void submitDonasi(String jenis_donasi, String jumlah, String pengiriman, String provinsi, String kota , String kecamatan,
+                      String kelurahan, String fulladdress){
 
         HashMap<String,String> request = new HashMap<>();
-        request.put("id_donatur",iddonatur);
         request.put("jenis_donasi",jenis_donasi);
         request.put("jumlah",jumlah);
         request.put("pengiriman",pengiriman);
@@ -84,9 +95,7 @@ public class YayasanDetailActivity extends AppCompatActivity {
         request.put("kota",kota);
         request.put("kecamatan",kecamatan);
         request.put("kelurahan",kelurahan);
-        request.put("longitude",longitude);
-        request.put("latitude",latitude);
-        request.put("status",status);
+        request.put("fulladdress",fulladdress);
 
         Connection.getInstance().getServiceEndPoint().submitDonasi(request).enqueue(new Callback<BaseResponse<String>>() {
             @Override

@@ -57,7 +57,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         user = MyApplication.getInstance().getUserSession();
 
-
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
@@ -150,7 +149,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
     private void mappingUserView(User user){
-        binding.textnama.setText(user.full_name);
+        binding.textnama.setText(user.name);
 
     }
 

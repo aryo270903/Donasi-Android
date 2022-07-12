@@ -40,7 +40,8 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="78dp">
+        tools:layout_editor_absoluteY="78dp"
+        android:padding="16dp">
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -122,25 +123,61 @@
                 android:textStyle="bold" />
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/outlinedTextField"
+                android:id="@+id/outlinedTextFieldnama"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/textberita1"
-                android:hint="Donatur">
+                android:hint="Nama"
+                android:visibility="visible">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/InputIdDonatur"
+                    android:id="@+id/InputNama"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:maxLines="1" />
+                    android:maxLines="1"
+                    android:visibility="gone"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/outlinedTextFieldemail"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/outlinedTextFieldnama"
+                android:hint="Email"
+                android:visibility="visible">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/inputEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:visibility="gone"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/outlinedTextFieldnotlp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/outlinedTextFieldemail"
+                android:hint="No Tlp"
+                android:visibility="visible">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/Inputnotlp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:visibility="gone"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <LinearLayout
                 android:id="@+id/spinner1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/outlinedTextField"
+                android:layout_below="@+id/outlinedTextFieldnotlp"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="20dp"
@@ -176,7 +213,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/InputJumlah"
-                    android:inputType="number"
+                    android:inputType="text"
                     />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -206,7 +243,6 @@
                     android:backgroundTint="#2ecc71"
                     android:entries="@array/pilih_jenis_pengiriman"
                     android:padding="5dp" />
-
 
             </LinearLayout>
 
@@ -278,78 +314,28 @@
                 android:id="@+id/outlinedTextFieldLatitude"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Latitude"
+                android:hint="Alamat Lengkap"
                 android:layout_below="@+id/outlinedTextFieldKelurahan"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/Inputlatitude"
+                    android:id="@+id/Inputalamat"
                     android:inputType="number"
                     android:minLines="1"
                     />
 
             </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/outlinedTextFieldLongtitude"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/outlinedTextFieldLatitude"
-                android:hint="Longtitude"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:id="@+id/Inputlongitude"
-                    android:layout_height="wrap_content"
-                    android:inputType="number"
-                    android:minLines="1"
-                    />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <LinearLayout
-                android:id="@+id/spinner3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="20dp"
-                android:layout_below="@+id/outlinedTextFieldLongtitude"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Status"
-                    android:textColor="@color/black"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
-
-                <Spinner
-                    android:id="@+id/InputStatus"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="#2ecc71"
-                    android:entries="@array/pilih_jenis_Status"
-                    android:padding="5dp" />
-
-
-            </LinearLayout>
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnsubmit"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
-                android:layout_below="@+id/spinner3"
+                android:layout_below="@+id/outlinedTextFieldLatitude"
                 android:layout_marginTop="16dp"
                 android:text="Donasi"
                 app:cornerRadius="20dp"/>
-
-
-
         </RelativeLayout>
 
     </androidx.core.widget.NestedScrollView>

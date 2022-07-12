@@ -73,6 +73,15 @@
         android:layout_marginTop="16dp"
         android:text="Sign In"
         app:cornerRadius="20dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnregister"
+        style="?attr/materialButtonOutlinedStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnLogin"
+        android:text="Register"
+        app:cornerRadius="20dp" />
 </RelativeLayout>
 
 </RelativeLayout>

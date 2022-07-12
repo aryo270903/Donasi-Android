@@ -19,7 +19,7 @@ import retrofit2.http.Query;
 
 public interface DonasiInterface {
 
-    @POST("http://103.226.138.222:3000/auth/login")
+    @POST("api/loginApi")
     Call<LoginResponse> login(@Body LoginRequest loginRequest);
 
     @GET("api/yayasan")
@@ -28,8 +28,8 @@ public interface DonasiInterface {
     @GET("api/gallery")
     Call<BaseResponse<List<Gallery>>> getListGallery();
 
-    @GET("http://103.226.138.222:3000/user/profile-detail")
-    Call<BaseResponse<User>> getProfileDetail(@Query("id") String id);
+    @GET("/api/detail/{id}")
+    Call<BaseResponse<User>> getProfileDetail(@Path("id") String id);
 
     @GET("api/yayasan/detail/{id}")
     Call<BaseResponse<Yayasan>> getYayasanDetail(@Path("id") String id);
