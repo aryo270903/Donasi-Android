@@ -201,22 +201,33 @@
 
             </LinearLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/outlinedTextFieldJumlah"
+            <LinearLayout
+                android:id="@+id/spinner2pembayaran"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/spinner1"
-                android:hint="Jumlah"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:orientation="vertical">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/InputJumlah"
-                    android:inputType="text"
-                    />
+                    android:text="Pembayaran"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
 
-            </com.google.android.material.textfield.TextInputLayout>
+                <Spinner
+                    android:id="@+id/InputPembayaran"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#2ecc71"
+                    android:entries="@array/jenis_pembayaran"
+                    android:padding="5dp" />
+
+            </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/spinner2"
@@ -225,7 +236,7 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="20dp"
-                android:layout_below="@id/outlinedTextFieldJumlah"
+                android:layout_below="@id/spinner2pembayaran"
                 android:orientation="vertical">
 
                 <TextView
