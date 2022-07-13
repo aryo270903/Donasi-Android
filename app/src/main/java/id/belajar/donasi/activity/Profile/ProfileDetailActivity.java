@@ -56,9 +56,13 @@ public class ProfileDetailActivity extends AppCompatActivity {
 //        binding.txtFirstName.setText(user.first_name);
 //        binding.txtLastName.setText(user.last_name);
 //        binding.txtPhone.setText(user.phone);
-        binding.txtFullName.setText(user.email);
-        binding.txtNim.setText(user.name);
-        binding.txtEmail.setText(user.role);
-
+        binding.Inputnama.setText(user.nama);
+        binding.Inputnama.setEnabled(false);
+        binding.InputEmail.setText(user.email);
+        binding.InputEmail.setEnabled(false);
+        binding.Inputnotelp.setText(user.no_telp);
+        binding.Inputnotelp.setEnabled(false);
+        binding.Inputalamat.setText(user.alamat);
+        binding.Inputalamat.setEnabled(false);
     }
 }

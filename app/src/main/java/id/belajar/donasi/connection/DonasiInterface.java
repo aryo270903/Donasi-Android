@@ -39,4 +39,6 @@ public interface DonasiInterface {
 
     @POST("api/donasi/submit")
     Call<BaseResponse<String>> submitDonasi(@Body HashMap<String,String> request);
+
+
 }

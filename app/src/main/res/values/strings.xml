@@ -2,6 +2,7 @@
     <string name="app_name">Donasi</string>
 
     <string-array name="pilih_jenis_donasi">
+        <item>Jenis Pembayaran</item>
 
         <item>Uang</item>
 
@@ -9,6 +10,7 @@
     </string-array>
 
     <string-array name="pilih_jenis_pengiriman">
+        <item>Jenis Pengiriman</item>
 
         <item>Diambil</item>
 

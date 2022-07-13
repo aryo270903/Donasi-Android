@@ -65,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
             binding.btnEdit.setVisibility(View.GONE);
             binding.btnLogin.setVisibility(View.VISIBLE);
             binding.btnkeluar.setVisibility(View.GONE);
+            binding.textemail.setVisibility(View.GONE);
         }else {
             getProfileDetail();
             binding.btnLogin.setVisibility(View.GONE);
@@ -149,7 +150,8 @@ public class MainActivity extends AppCompatActivity {
         });
     }
     private void mappingUserView(User user){
-        binding.textnama.setText(user.name);
+        binding.textnama.setText(user.nama);
+        binding.textemail.setText(user.email);
 
     }
 

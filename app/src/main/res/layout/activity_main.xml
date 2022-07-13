@@ -80,16 +80,27 @@
                             android:layout_height="wrap_content"
                             android:text="Nama Lengkap"
                             android:textAllCaps="true"
-                            android:textColor="@color/teal_700"
+                            android:textColor="@color/black"
                             android:textSize="16sp"
-                            android:textStyle="bold"/>
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/textemail"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Email"
+                            android:layout_marginTop="20dp"
+                            android:textColor="@color/black"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
 
                         <com.google.android.material.button.MaterialButton
                             android:id="@+id/btnEdit"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Lihat Profil"
-                            android:layout_marginTop="8dp"
+                            android:layout_marginTop="12dp"
                             android:layout_below="@+id/textnama"/>
 
                         <com.google.android.material.button.MaterialButton

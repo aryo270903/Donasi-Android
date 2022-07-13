@@ -52,42 +52,12 @@
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
                         <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/txtNim"
+                            android:id="@+id/Inputnama"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             />
 
                     </com.google.android.material.textfield.TextInputLayout>
-
-<!--                    <com.google.android.material.textfield.TextInputLayout-->
-<!--                        android:id="@+id/outlinedTextField1"-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:hint="Frist Name"-->
-<!--                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">-->
-
-<!--                        <com.google.android.material.textfield.TextInputEditText-->
-<!--                            android:id="@+id/txtFirstName"-->
-<!--                            android:layout_width="match_parent"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            />-->
-
-<!--                    </com.google.android.material.textfield.TextInputLayout>-->
-
-<!--                    <com.google.android.material.textfield.TextInputLayout-->
-<!--                        android:id="@+id/outlinedTextField2"-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:hint="Last Name"-->
-<!--                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">-->
-
-<!--                        <com.google.android.material.textfield.TextInputEditText-->
-<!--                            android:id="@+id/txtLastName"-->
-<!--                            android:layout_width="match_parent"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            />-->
-
-<!--                    </com.google.android.material.textfield.TextInputLayout>-->
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/outlinedTextField3"
@@ -97,50 +67,51 @@
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
                         <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/txtFullName"
+                            android:id="@+id/InputEmail"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             />
 
                     </com.google.android.material.textfield.TextInputLayout>
 
-<!--                    <com.google.android.material.textfield.TextInputLayout-->
-<!--                        android:id="@+id/outlinedTextField4"-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:hint="Phone"-->
-<!--                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">-->
-
-<!--                        <com.google.android.material.textfield.TextInputEditText-->
-<!--                            android:id="@+id/txtPhone"-->
-<!--                            android:layout_width="match_parent"-->
-<!--                            android:layout_height="wrap_content" />-->
-
-<!--                    </com.google.android.material.textfield.TextInputLayout>-->
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/outlinedTextField5"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Role"
+                        android:hint="No Tlp"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
                         <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/txtEmail"
+                            android:id="@+id/Inputnotelp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content" />
 
                     </com.google.android.material.textfield.TextInputLayout>
-<!--                    <Button-->
-<!--                        android:id="@+id/btnsubmit"-->
-<!--                        android:layout_width="150dp"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_gravity="bottom|left|end"-->
-<!--                        android:layout_margin="16dp"-->
-<!--                        android:text="Kirim Data"-->
-<!--                        android:textColor="@color/white"-->
-<!--                        android:textSize="13sp"-->
-<!--                        android:textStyle="bold" />-->
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/outlinedTextField6"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Alamat"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/Inputalamat"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+                    <Button
+                        android:id="@+id/btnEdit"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom|left|end"
+                        android:layout_margin="16dp"
+                        android:text="Edit Profil"
+                        android:textColor="@color/white"
+                        android:textSize="13sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
