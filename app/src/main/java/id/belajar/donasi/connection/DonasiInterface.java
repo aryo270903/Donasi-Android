@@ -14,6 +14,7 @@ import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
@@ -36,6 +37,12 @@ public interface DonasiInterface {
 
     @GET("api/berita")
     Call<BaseResponse<List<Berita>>> getListBerita();
+
+    @POST("api/submit")
+    Call<BaseResponse<User>> register(@Body HashMap<String,String> request);
+
+    @PUT("api/donatur/update/{id}")
+    Call<BaseResponse<User>> Editprofile(@Path("id") String id,@Body HashMap<String,String> request);
 
     @POST("api/donasi/submit")
     Call<BaseResponse<String>> submitDonasi(@Body HashMap<String,String> request);

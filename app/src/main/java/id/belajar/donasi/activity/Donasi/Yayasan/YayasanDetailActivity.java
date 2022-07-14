@@ -128,6 +128,7 @@ public class YayasanDetailActivity extends AppCompatActivity {
 
     private void validasi(){
         String name = binding.InputNama.getText().toString();
+        String jenis_pembayaran = binding.InputJenisBarang.getSelectedItem().toString();
         String email = binding.inputEmail.getText().toString();
         String notlp = binding.Inputnotlp.getText().toString();
         String jenisbarang = binding.InputJenisBarang.getSelectedItem().toString();
@@ -137,14 +138,16 @@ public class YayasanDetailActivity extends AppCompatActivity {
         String kecamatan = binding.InputKecamatan.getText().toString();
         String kelurahan = binding.InputKelurahan.getText().toString();
         String fulladdress = binding.Inputalamat.getText().toString();
+        String jumlah = binding.InputJumlah.getText().toString();
 
-        submitDonasi(name,email,notlp,jenisbarang,pengiriman,provinsi,kota,kecamatan,kelurahan,fulladdress);
+        submitDonasi(name,email,notlp,jumlah,jenisbarang,pengiriman,provinsi,kota,kecamatan,kelurahan,fulladdress,jenis_pembayaran);
     }
 
     void submitDonasi(String name,String email,String no_tlp,String jenis_donasi, String pengiriman, String provinsi, String kota , String kecamatan,
-                      String kelurahan, String fulladdress){
+                      String kelurahan, String jumlah,String fulladdress, String jenis_pembayaran){
 
         HashMap<String,String> request = new HashMap<>();
+        request.put("jenis_pembayaran",jenis_pembayaran);
         request.put("name",name);
         request.put("email", email);
         request.put("no_tlp",no_tlp);
@@ -155,6 +158,7 @@ public class YayasanDetailActivity extends AppCompatActivity {
         request.put("kecamatan",kecamatan);
         request.put("kelurahan",kelurahan);
         request.put("fulladdress",fulladdress);
+        request.put("jumlah",jumlah);
 
         Connection.getInstance().getServiceEndPoint().submitDonasi(request).enqueue(new Callback<BaseResponse<String>>() {
             @Override
@@ -168,7 +172,7 @@ public class YayasanDetailActivity extends AppCompatActivity {
                         Toast.makeText(YayasanDetailActivity.this, res.message, Toast.LENGTH_SHORT).show();
 
                 } else {
-                    Toast.makeText(YayasanDetailActivity.this, response.message(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(YayasanDetailActivity.this, "oii", Toast.LENGTH_SHORT).show();
                 }
             }
             @Override

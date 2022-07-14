@@ -119,10 +119,13 @@ public class MainActivity extends AppCompatActivity {
             editor.clear();
             editor.apply();
 
-            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-            startActivity(intent);
-            Toast.makeText(this,"Anda Telah Loqout",Toast.LENGTH_LONG).show();
-            finish();
+            binding.textnama.setVisibility(View.GONE);
+            binding.btnEdit.setVisibility(View.GONE);
+            binding.btnLogin.setVisibility(View.VISIBLE);
+            binding.btnkeluar.setVisibility(View.GONE);
+            binding.textemail.setVisibility(View.GONE);
+
+
         });
 
     }

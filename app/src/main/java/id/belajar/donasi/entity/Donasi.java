@@ -7,9 +7,7 @@ public class Donasi {
     public String name;
     public String email;
     public String no_tlp;
-    public String transfer;
-    public String qr;
-    public String link;
+    public String jenis_pembayaran;
     public String id_donatur;
     public String jenis_donasi;
     public String jumlah;
