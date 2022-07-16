@@ -4,8 +4,10 @@ import com.google.gson.annotations.SerializedName;
 
 public class Donasi {
     public String id;
-    public String name;
-    public String email;
+    @SerializedName("name")
+    public String nama;
+    @SerializedName("email")
+    public String Email;
     public String no_tlp;
     public String jenis_pembayaran;
     public String id_donatur;
@@ -16,7 +18,6 @@ public class Donasi {
     public String kota;
     public String kecamatan;
     public String kelurahan;
-    @SerializedName("full_address")
-    public String fulladdress;
+    public String full_address;
     public String status;
 }

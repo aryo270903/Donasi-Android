@@ -233,10 +233,10 @@
                 android:id="@+id/spinner2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_below="@id/spinner2pembayaran"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="20dp"
-                android:layout_below="@id/spinner2pembayaran"
                 android:orientation="vertical">
 
                 <TextView
@@ -351,7 +351,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/InputJumlah"
-                    android:inputType="text"
+                    android:inputType="number"
                     android:minLines="1"
                     />
 
