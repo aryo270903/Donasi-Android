@@ -80,8 +80,7 @@ public class YayasanDetailActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String value = (String) parent.getSelectedItem();
-                if(value.equals("Uang")){
-                    binding.spinner2pembayaran.setVisibility(View.VISIBLE);
+                if(value.equals("uang")){
                     binding.spinner2.setVisibility(View.GONE);
                     binding.outlinedTextFieldProvinsi.setVisibility(View.GONE);
                     binding.outlinedTextFieldKota.setVisibility(View.GONE);
@@ -91,7 +90,6 @@ public class YayasanDetailActivity extends AppCompatActivity {
                     binding.outlinedTextFieldJumlah.setVisibility(View.VISIBLE);
                 } else {
                     binding.spinner2.setVisibility(View.VISIBLE);
-                    binding.spinner2pembayaran.setVisibility(View.GONE);
                     binding.outlinedTextFieldProvinsi.setVisibility(View.GONE);
                     binding.outlinedTextFieldKota.setVisibility(View.GONE);
                     binding.outlinedTextFieldKecamatan.setVisibility(View.GONE);
@@ -134,18 +132,16 @@ public class YayasanDetailActivity extends AppCompatActivity {
         String kelurahan = binding.InputKelurahan.getText().toString();
         String full_address = binding.Inputalamat.getText().toString();
         String jumlah = binding.InputJumlah.getText().toString();
-        String jenis_pembayaran = binding.InputPembayaran.getSelectedItem().toString();
         String nama = binding.InputNama.getText().toString();
         String no_tlp = binding.Inputnotlp.getText().toString();
         String Email = binding.inputEmail.getText().toString();
 
 
-
-        submitDonasi(jenis_donasi,pengiriman,provinsi,kota,kecamatan,kelurahan,full_address,jumlah,jenis_pembayaran,nama,no_tlp,Email);
+        submitDonasi(jenis_donasi,pengiriman,provinsi,kota,kecamatan,kelurahan,full_address,jumlah,nama,no_tlp,Email);
         }
 
     void submitDonasi(String jenis_donasi,String pengiriman,String provinsi,String kota,String kecamatan,String kelurahan,
-                      String full_address,String jumlah,String jenis_pembayaran,String nama,String no_tlp,String Email){
+                      String full_address,String jumlah,String nama,String no_tlp,String Email){
 
         HashMap<String,String> request = new HashMap<>();
         request.put("jenis_donasi",jenis_donasi);
@@ -156,7 +152,6 @@ public class YayasanDetailActivity extends AppCompatActivity {
         request.put("kelurahan",kelurahan);
         request.put("full_address",full_address);
         request.put("jumlah",jumlah);
-        request.put("jenis_pembayaran",jenis_pembayaran);
         request.put("nama",nama);
         request.put("no_tlp",no_tlp);
         request.put("Email",Email);
