@@ -109,6 +109,8 @@ public class ProfileDetailActivity extends AppCompatActivity {
                 if(response.code() == 200 ){
                     BaseResponse<User> res = response.body();
                     if(res.code.equals("00")) {
+                        user = res.data;
+                        MyApplication.getInstance().setUserSession(user);
                         finish();
                         Toast.makeText(ProfileDetailActivity.this, "save sukses", Toast.LENGTH_SHORT).show();
                     }

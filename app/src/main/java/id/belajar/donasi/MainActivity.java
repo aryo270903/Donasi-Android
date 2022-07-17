@@ -114,20 +114,90 @@ public class MainActivity extends AppCompatActivity {
         });
 
         binding.btnkeluar.setOnClickListener(v -> {
-            SharedPreferences pref = getSharedPreferences(getPackageName(), Context.MODE_PRIVATE);
-            SharedPreferences.Editor editor = pref.edit();
-            editor.clear();
-            editor.apply();
-
-            binding.textnama.setVisibility(View.GONE);
-            binding.btnEdit.setVisibility(View.GONE);
-            binding.btnLogin.setVisibility(View.VISIBLE);
-            binding.btnkeluar.setVisibility(View.GONE);
-            binding.textemail.setVisibility(View.GONE);
-
-
+           logout();
         });
 
+    }
+
+
+
+    public void logout()
+    {
+
+        // Create the object of
+        // AlertDialog Builder class
+        AlertDialog.Builder builder
+                = new AlertDialog
+                .Builder(MainActivity.this);
+
+        // Set the message show for the Alert time
+        builder.setMessage("Yakin Mau Logout?");
+
+        // Set Alert Title
+        builder.setTitle("Peringatan !");
+
+        // Set Cancelable false
+        // for when the user clicks on the outside
+        // the Dialog Box then it will remain show
+        builder.setCancelable(false);
+
+        // Set the positive button with yes name
+        // OnClickListener method is use of
+        // DialogInterface interface.
+
+        builder
+                .setPositiveButton(
+                        "Yes",
+                        new DialogInterface
+                                .OnClickListener() {
+
+                            @Override
+                            public void onClick(DialogInterface dialog,
+                                                int which)
+                            {
+
+                                SharedPreferences pref = getSharedPreferences(getPackageName(), Context.MODE_PRIVATE);
+                                SharedPreferences.Editor editor = pref.edit();
+                                editor.clear();
+                                editor.apply();
+
+                                MyApplication.getInstance().userSession = null;
+
+                                binding.textnama.setVisibility(View.GONE);
+                                binding.btnEdit.setVisibility(View.GONE);
+                                binding.btnLogin.setVisibility(View.VISIBLE);
+                                binding.btnkeluar.setVisibility(View.GONE);
+                                binding.textemail.setVisibility(View.GONE);
+
+                                Toast.makeText(MainActivity.this,"Anda Telah Loqout",Toast.LENGTH_LONG).show();
+                            }
+                        });
+
+        // Set the Negative button with No name
+        // OnClickListener method is use
+        // of DialogInterface interface.
+        builder
+                .setNegativeButton(
+                        "No",
+                        new DialogInterface
+                                .OnClickListener() {
+
+                            @Override
+                            public void onClick(DialogInterface dialog,
+                                                int which)
+                            {
+
+                                // If user click no
+                                // then dialog box is canceled.
+                                dialog.cancel();
+                            }
+                        });
+
+        // Create the Alert dialog
+        AlertDialog alertDialog = builder.create();
+
+        // Show the Alert Dialog box
+        alertDialog.show();
     }
 
     private void getProfileDetail() {
@@ -138,6 +208,7 @@ public class MainActivity extends AppCompatActivity {
                     BaseResponse<User> res = response.body();
                     if (res.code.equals("00")){
                         mappingUserView(res.data);
+                        MyApplication.getInstance().setUserSession(user);
                     }else {
                         Toast.makeText(MainActivity.this,res.message, Toast.LENGTH_LONG).show();
                     }
@@ -158,8 +229,16 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        user = MyApplication.getInstance().getUserSession();
+        if(user != null)
+            mappingUserView(user);
+    }
+
     void getBerita(){
-        Connection.getInstance().getServiceEndPoint().getListBerita().enqueue(new Callback<BaseResponse<List<Berita>>>() {
+        Connection.getInstance().getServiceEndPoint().getListBerita(5).enqueue(new Callback<BaseResponse<List<Berita>>>() {
             @Override
             public void onResponse(Call<BaseResponse<List<Berita>>> call, Response<BaseResponse<List<Berita>>> response) {
                 if (response.isSuccessful()){
@@ -183,7 +262,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     void getGallery(){
-        Connection.getInstance().getServiceEndPoint().getListGallery().enqueue(new Callback<BaseResponse<List<Gallery>>>() {
+        Connection.getInstance().getServiceEndPoint().getListGallery(5).enqueue(new Callback<BaseResponse<List<Gallery>>>() {
             @Override
             public void onResponse(Call<BaseResponse<List<Gallery>>> call, Response<BaseResponse<List<Gallery>>> response) {
                 if (response.isSuccessful()){

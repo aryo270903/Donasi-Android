@@ -47,7 +47,7 @@ public class BeritaActivity extends AppCompatActivity {
     }
 
     void getBerita(){
-        Connection.getInstance().getServiceEndPoint().getListBerita().enqueue(new Callback<BaseResponse<List<Berita>>>() {
+        Connection.getInstance().getServiceEndPoint().getListBerita(500).enqueue(new Callback<BaseResponse<List<Berita>>>() {
             @Override
             public void onResponse(Call<BaseResponse<List<Berita>>> call, Response<BaseResponse<List<Berita>>> response) {
                 if (response.isSuccessful()){

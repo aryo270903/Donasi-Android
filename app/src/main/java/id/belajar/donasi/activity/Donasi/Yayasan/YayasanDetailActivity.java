@@ -125,8 +125,17 @@ public class YayasanDetailActivity extends AppCompatActivity {
         binding.keterangan.setText(yayasan.keterangan);
     }
     private void validasi(){
-        String jenis_donasi = binding.InputJenisBarang.getSelectedItem().toString();
-        String pengiriman = binding.InputPengiriman.getSelectedItem().toString();
+
+
+        String jenis_donasi = "";
+        if(binding.InputJenisBarang.getSelectedItemPosition() != 0)
+            jenis_donasi = binding.InputJenisBarang.getSelectedItem().toString();
+
+        String pengiriman = "";
+        if(binding.InputPengiriman.getSelectedItemPosition() != 0)
+            pengiriman = binding.InputPengiriman.getSelectedItem().toString();
+
+
         String provinsi = binding.InputProvinsi.getText().toString();
         String kota = binding.InputKota.getText().toString();
         String kecamatan = binding.InputKecamatan.getText().toString();
@@ -137,15 +146,20 @@ public class YayasanDetailActivity extends AppCompatActivity {
         String no_tlp = binding.Inputnotlp.getText().toString();
         String Email = binding.inputEmail.getText().toString();
 
-        submitDonasi(jenis_donasi,pengiriman,provinsi,kota,kecamatan,kelurahan,jumlah,full_address,nama,no_tlp,Email);
+        submitDonasi(jenis_donasi,pengiriman,provinsi,kota,kecamatan,kelurahan,full_address,jumlah,nama,no_tlp,Email);
         }
 
     void submitDonasi(String jenis_donasi,String pengiriman,String provinsi,String kota,String kecamatan,String kelurahan,
-                      String full_address,String nama,String no_tlp,String Email,String jumlah){
+                      String full_address,String jumlah,String nama,String no_tlp,String Email){
 
         HashMap<String,String> request = new HashMap<>();
         request.put("jenis_donasi",jenis_donasi);
-        request.put("pengiriman",pengiriman);
+
+        if(jenis_donasi.equals("uang"))
+            request.put("pengiriman","DiAntar");
+        else
+            request.put("pengiriman",pengiriman);
+
         request.put("provinsi",provinsi);
         request.put("kota",kota);
         request.put("kecamatan",kecamatan);
@@ -155,6 +169,11 @@ public class YayasanDetailActivity extends AppCompatActivity {
         request.put("nama",nama);
         request.put("no_tlp",no_tlp);
         request.put("Email",Email);
+
+        if (user!= null){
+            request.put("id_donatur",user.id);
+        }
+
 
         Connection.getInstance().getServiceEndPoint().submitDonasi(request).enqueue(new Callback<BaseResponse<String>>() {
             @Override

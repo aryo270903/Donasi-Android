@@ -27,7 +27,7 @@ public interface DonasiInterface {
     Call<BaseResponse<List<Yayasan>>> getListYayasan();
 
     @GET("api/gallery")
-    Call<BaseResponse<List<Gallery>>> getListGallery();
+    Call<BaseResponse<List<Gallery>>> getListGallery(@Query("limit") Integer limit);
 
     @GET("/api/detail/{id}")
     Call<BaseResponse<User>> getProfileDetail(@Path("id") String id);
@@ -36,7 +36,7 @@ public interface DonasiInterface {
     Call<BaseResponse<Yayasan>> getYayasanDetail(@Path("id") String id);
 
     @GET("api/berita")
-    Call<BaseResponse<List<Berita>>> getListBerita();
+    Call<BaseResponse<List<Berita>>> getListBerita(@Query("limit") Integer limit);
 
     @POST("api/submit")
     Call<BaseResponse<User>> register(@Body HashMap<String,String> request);

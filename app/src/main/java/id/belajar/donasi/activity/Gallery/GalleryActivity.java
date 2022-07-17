@@ -49,7 +49,7 @@ public class GalleryActivity extends AppCompatActivity {
     }
 
     void getGallery(){
-        Connection.getInstance().getServiceEndPoint().getListGallery().enqueue(new Callback<BaseResponse<List<Gallery>>>() {
+        Connection.getInstance().getServiceEndPoint().getListGallery(500).enqueue(new Callback<BaseResponse<List<Gallery>>>() {
             @Override
             public void onResponse(Call<BaseResponse<List<Gallery>>> call, Response<BaseResponse<List<Gallery>>> response) {
                 if (response.isSuccessful()){
