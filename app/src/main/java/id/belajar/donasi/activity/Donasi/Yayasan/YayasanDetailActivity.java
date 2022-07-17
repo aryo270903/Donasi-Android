@@ -16,6 +16,7 @@ import java.util.HashMap;
 import id.belajar.donasi.BuildConfig;
 import id.belajar.donasi.MainActivity;
 import id.belajar.donasi.MyApplication;
+import id.belajar.donasi.activity.Auth.RegisterActivity;
 import id.belajar.donasi.activity.Berita.BeritaDetailActivity;
 import id.belajar.donasi.activity.Profile.ProfileDetailActivity;
 import id.belajar.donasi.connection.Connection;
@@ -49,6 +50,34 @@ public class YayasanDetailActivity extends AppCompatActivity {
             binding.inputEmail.setVisibility(View.GONE);
             binding.Inputnotlp.setVisibility(View.GONE);
         }
+        binding.InputJenisBarang.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String value = (String) parent.getSelectedItem();
+                if(value.equals("uang")){
+                    binding.spinner2.setVisibility(View.GONE);
+                    binding.outlinedTextFieldProvinsi.setVisibility(View.GONE);
+                    binding.outlinedTextFieldKota.setVisibility(View.GONE);
+                    binding.outlinedTextFieldKecamatan.setVisibility(View.GONE);
+                    binding.outlinedTextFieldKelurahan.setVisibility(view.GONE);
+                    binding.outlinedTextFieldLatitude.setVisibility(view.GONE);
+                    binding.outlinedTextFieldJumlah.setVisibility(View.VISIBLE);
+                } else {
+                    binding.spinner2.setVisibility(View.VISIBLE);
+                    binding.outlinedTextFieldProvinsi.setVisibility(View.GONE);
+                    binding.outlinedTextFieldKota.setVisibility(View.GONE);
+                    binding.outlinedTextFieldKecamatan.setVisibility(View.GONE);
+                    binding.outlinedTextFieldKelurahan.setVisibility(view.GONE);
+                    binding.outlinedTextFieldLatitude.setVisibility(view.GONE);
+                    binding.outlinedTextFieldJumlah.setVisibility(View.GONE);
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
         binding.InputPengiriman.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -70,34 +99,6 @@ public class YayasanDetailActivity extends AppCompatActivity {
                     binding.outlinedTextFieldJumlah.setVisibility(View.GONE);
                 }
             }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-        binding.InputJenisBarang.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String value = (String) parent.getSelectedItem();
-                if(value.equals("uang")){
-                    binding.spinner2.setVisibility(View.GONE);
-                    binding.outlinedTextFieldProvinsi.setVisibility(View.GONE);
-                    binding.outlinedTextFieldKota.setVisibility(View.GONE);
-                    binding.outlinedTextFieldKecamatan.setVisibility(View.GONE);
-                    binding.outlinedTextFieldKelurahan.setVisibility(view.GONE);
-                    binding.outlinedTextFieldLatitude.setVisibility(view.GONE);
-                    binding.outlinedTextFieldJumlah.setVisibility(View.VISIBLE);
-                } else {
-                    binding.spinner2.setVisibility(View.VISIBLE);
-                    binding.outlinedTextFieldProvinsi.setVisibility(View.GONE);
-                    binding.outlinedTextFieldKota.setVisibility(View.GONE);
-                    binding.outlinedTextFieldKecamatan.setVisibility(View.GONE);
-                    binding.outlinedTextFieldKelurahan.setVisibility(view.GONE);
-                    binding.outlinedTextFieldLatitude.setVisibility(view.GONE);
-                }
-            }
-
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
@@ -136,12 +137,11 @@ public class YayasanDetailActivity extends AppCompatActivity {
         String no_tlp = binding.Inputnotlp.getText().toString();
         String Email = binding.inputEmail.getText().toString();
 
-
-        submitDonasi(jenis_donasi,pengiriman,provinsi,kota,kecamatan,kelurahan,full_address,jumlah,nama,no_tlp,Email);
+        submitDonasi(jenis_donasi,pengiriman,provinsi,kota,kecamatan,kelurahan,jumlah,full_address,nama,no_tlp,Email);
         }
 
     void submitDonasi(String jenis_donasi,String pengiriman,String provinsi,String kota,String kecamatan,String kelurahan,
-                      String full_address,String jumlah,String nama,String no_tlp,String Email){
+                      String full_address,String nama,String no_tlp,String Email,String jumlah){
 
         HashMap<String,String> request = new HashMap<>();
         request.put("jenis_donasi",jenis_donasi);
@@ -156,15 +156,16 @@ public class YayasanDetailActivity extends AppCompatActivity {
         request.put("no_tlp",no_tlp);
         request.put("Email",Email);
 
-
         Connection.getInstance().getServiceEndPoint().submitDonasi(request).enqueue(new Callback<BaseResponse<String>>() {
             @Override
             public void onResponse(Call<BaseResponse<String>> call, Response<BaseResponse<String>> response) {
 
                 if(response.code() == 200 ){
                     BaseResponse<String> res = response.body();
-                    if(res.code.equals("00"))
+                    if(res.code.equals("00")) {
+                        finish();
                         Toast.makeText(YayasanDetailActivity.this, "save sukses", Toast.LENGTH_SHORT).show();
+                    }
                     else
                         Toast.makeText(YayasanDetailActivity.this, "ioo", Toast.LENGTH_SHORT).show();
 

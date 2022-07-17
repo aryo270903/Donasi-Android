@@ -2,10 +2,10 @@
     <string name="app_name">Donasi</string>
 
     <string-array name="pilih_jenis_donasi">
-
+        <item>Pilih Jenis Donasi</item>
         <item>uang</item>
-
         <item>Barang</item>
+
     </string-array>
 
     <string-array name="pilih_jenis_pengiriman">
@@ -15,12 +15,12 @@
         <item>DiAntar</item>
     </string-array>
 
-    <string-array name="pilih_jenis_Status">
+<!--    <string-array name="pilih_jenis_Status">-->
 
-        <item>Selesai</item>
+<!--        <item>Selesai</item>-->
 
-        <item>Belum Selesai</item>
-    </string-array>
+<!--        <item>Belum Selesai</item>-->
+<!--    </string-array>-->
 
 <!--    <string-array name="jenis_pembayaran">-->
 

@@ -27,6 +27,7 @@ import id.belajar.donasi.entity.Gallery;
 public class GalleryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
     private List<Gallery> dtList = new ArrayList<>();
     private Activity activity;
+    private final int limit = 10;
 
     public GalleryAdapter(Activity activity,List<Gallery> dtList){
         this.activity = activity;
@@ -67,7 +68,14 @@ public class GalleryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
     @Override
     public int getItemCount() {
-        return dtList.size();
+        if(dtList.size() > limit){
+            return limit;
+        }
+        else
+        {
+            return dtList.size();
+        }
+
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{

@@ -46,6 +46,9 @@ public class ProfileDetailActivity extends AppCompatActivity {
                     binding.btnEdit.setVisibility(View.GONE);
             }
         });
+        binding.backeditprofile.setOnClickListener(v -> {
+            finish();
+        });
         getProfileDetail();
         binding.btnsubmit.setOnClickListener(v -> validasi());
     }
