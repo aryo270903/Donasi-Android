@@ -142,15 +142,15 @@ public class YayasanDetailActivity extends AppCompatActivity {
         String kelurahan = binding.InputKelurahan.getText().toString();
         String full_address = binding.Inputalamat.getText().toString();
         String jumlah = binding.InputJumlah.getText().toString();
-        String nama = binding.InputNama.getText().toString();
+        String name = binding.InputNama.getText().toString();
         String no_tlp = binding.Inputnotlp.getText().toString();
-        String Email = binding.inputEmail.getText().toString();
+        String email = binding.inputEmail.getText().toString();
 
-        submitDonasi(jenis_donasi,pengiriman,provinsi,kota,kecamatan,kelurahan,full_address,jumlah,nama,no_tlp,Email);
+        submitDonasi(jenis_donasi,pengiriman,provinsi,kota,kecamatan,kelurahan,full_address,jumlah,name,no_tlp,email);
         }
 
     void submitDonasi(String jenis_donasi,String pengiriman,String provinsi,String kota,String kecamatan,String kelurahan,
-                      String full_address,String jumlah,String nama,String no_tlp,String Email){
+                      String full_address,String jumlah,String name,String no_tlp,String email){
 
         HashMap<String,String> request = new HashMap<>();
         request.put("jenis_donasi",jenis_donasi);
@@ -166,9 +166,9 @@ public class YayasanDetailActivity extends AppCompatActivity {
         request.put("kelurahan",kelurahan);
         request.put("full_address",full_address);
         request.put("jumlah",jumlah);
-        request.put("nama",nama);
+        request.put("name",name);
         request.put("no_tlp",no_tlp);
-        request.put("Email",Email);
+        request.put("email",email);
 
         if (user!= null){
             request.put("id_donatur",user.id);
